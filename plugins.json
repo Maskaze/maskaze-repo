@@ -1,0 +1,16 @@
+[
+    {
+        "fileHash": "sha256-820330b477d123e5aabc431d089cd9535df0144ae42c85b9640c2946afd5d2cb",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/Maskaze/maskaze-repo",
+        "fileSize": 7912,
+        "status": 3,
+        "authors": [
+            "Maskaze"
+        ],
+        "version": -1,
+        "internalName": "NSFWProvider",
+        "url": "https://raw.githubusercontent.com/Maskaze/maskaze-repo/builds/NSFWProvider.cs3",
+        "name": "NSFWProvider"
+    }
+]
