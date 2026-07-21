@@ -1,8 +1,6 @@
-import com.lagradost.cloudstream3.gradle.CloudstreamExtension
-
 plugins {
     id("com.android.library")
-    kotlin("android")
+    id("kotlin-android")
     id("com.lagradost.cloudstream3.gradle")
 }
 
