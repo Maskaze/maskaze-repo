@@ -5,8 +5,7 @@ plugins {
 }
 
 cloudstream {
-    name = "SupJav NSFW"
-    description = "Pulls video content streams from SupJav website source"
-    providerClass = "com.myplugins.NSFWProvider"
+    // Correct functions required by newer CloudStream core library templates
+    setExtensions(listOf("com.myplugins.NSFWProvider"))
     authors = listOf("Maskaze")
 }
