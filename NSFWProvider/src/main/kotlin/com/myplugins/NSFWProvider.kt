@@ -53,3 +53,4 @@ class NSFWProvider : MainAPI() {
         )
         return true
     }
+}
