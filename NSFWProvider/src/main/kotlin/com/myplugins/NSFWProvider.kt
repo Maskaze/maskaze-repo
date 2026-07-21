@@ -6,7 +6,7 @@ import org.jsoup.nodes.Element
 
 class NSFWProvider : MainAPI() {
     override var mainUrl = "https://supjav.com"
-    override var name = "SupJav"
+    override var name = "SupJav NSFW"
     override val supportedTypes = setOf(TvType.NSFW)
     override var lang = "en"
     override val hasMainPage = true
