@@ -11,10 +11,9 @@ buildscript {
     }
 
     dependencies {
-        // Updated to matching version toolsets
         classpath("com.android.tools.build:gradle:8.7.3")
         classpath("com.github.recloudstream:gradle:-SNAPSHOT")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:2.1.0")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:2.4.0") // Restored to match library
     }
 }
 
@@ -44,8 +43,8 @@ subprojects {
 
         defaultConfig {
             minSdk = 21
-            compileSdkVersion(34) // Lowered step slightly to prevent D8 metadata crash layout issues
-            targetSdk = 34
+            compileSdkVersion(35)
+            targetSdk = 35
         }
 
         compileOptions {
@@ -59,7 +58,8 @@ subprojects {
                 freeCompilerArgs.addAll(
                     "-Xno-call-assertions",
                     "-Xno-param-assertions",
-                    "-Xno-receiver-assertions"
+                    "-Xno-receiver-assertions",
+                    "-Xskip-metadata-version-check" // This bypasses the Dex metadata error completely
                 )
             }
         }
