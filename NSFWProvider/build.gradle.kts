@@ -5,7 +5,6 @@ plugins {
 }
 
 cloudstream {
-    // Correct functions required by newer CloudStream core library templates
-    setExtensions(listOf("com.myplugins.NSFWProvider"))
+    providerClass = "com.myplugins.NSFWProvider"
     authors = listOf("Maskaze")
 }
