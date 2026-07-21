@@ -1,0 +1,8 @@
+{
+  "name": "Maskaze TV Repo",
+  "description": "Custom extensions for CloudStream Android TV",
+  "manifestVersion": 1,
+  "pluginLists": [
+    "https://githubusercontent.com"
+  ]
+}
