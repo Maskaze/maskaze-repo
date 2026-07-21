@@ -42,14 +42,13 @@ class NSFWProvider : MainAPI() {
         val iframeUrl = document.selectFirst("iframe")?.attr("src") ?: return false
         
         callback.invoke(
-            newExtractorLink(
+            ExtractorLink(
                 name,
                 "Primary Stream",
                 iframeUrl,
-                referer = mainUrl,
-                quality = Qualities.P720.value
+                mainUrl,
+                Qualities.P720.value
             )
         )
         return true
     }
-}
