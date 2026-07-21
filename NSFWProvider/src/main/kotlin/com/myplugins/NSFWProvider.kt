@@ -6,16 +6,16 @@ import org.jsoup.nodes.Element
 
 class NSFWProvider : MainAPI() {
     override var mainUrl = "https://supjav.com"
-    override var name = "SupJav NSFW"
+    override var name = "SupJav"
     override val supportedTypes = setOf(TvType.NSFW)
     override var lang = "en"
     override val hasMainPage = true
 
-    override suspend fun getMainPage(page: Int, request: HomePageRequest): HomePageResponse {
+    override suspend fun getMainPage(page: Int, request: MainPageRequest): HomePageResponse? {
         val document = app.get(mainUrl).document
-        val items = document.select(".post") // Finds the video boxes
+        val items = document.select(".post")
         val homeResults = items.mapNotNull { it.toSearchResult() }
-        return HomePageResponse(listOf(HomePageList("Recent Releases", homeResults)), hasNext = false)
+        return newHomePageResponse(listOf(HomePageList("Recent Releases", homeResults)), false)
     }
 
     private fun Element.toSearchResult(): SearchResponse? {
@@ -39,11 +39,10 @@ class NSFWProvider : MainAPI() {
 
     override suspend fun loadLinks(data: String, isCasting: Boolean, subtitleCallback: (SubtitleFile) -> Unit, callback: (ExtractorLink) -> Unit): Boolean {
         val document = app.get(data).document
-        // Finds player streaming sources hidden in the webpage layout
         val iframeUrl = document.selectFirst("iframe")?.attr("src") ?: return false
         
         callback.invoke(
-            ExtractorLink(
+            newExtractorLink(
                 name,
                 "Primary Stream",
                 iframeUrl,
