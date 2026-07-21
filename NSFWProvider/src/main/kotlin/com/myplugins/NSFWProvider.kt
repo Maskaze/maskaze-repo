@@ -42,7 +42,7 @@ class NSFWProvider : MainAPI() {
         val iframeUrl = document.selectFirst("iframe")?.attr("src") ?: return false
         
         callback.invoke(
-            ExtractorLink(
+            newExtractorLink(
                 name,
                 "Primary Stream",
                 iframeUrl,
@@ -52,3 +52,4 @@ class NSFWProvider : MainAPI() {
         )
         return true
     }
+}
