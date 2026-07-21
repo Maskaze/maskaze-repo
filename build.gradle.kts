@@ -13,7 +13,7 @@ buildscript {
     dependencies {
         classpath("com.android.tools.build:gradle:8.7.3")
         classpath("com.github.recloudstream:gradle:-SNAPSHOT")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:2.1.0") // Bumps step down cleanly to match tool chains
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:2.4.0") // Required for CloudStream
     }
 }
 
@@ -22,13 +22,6 @@ allprojects {
         google()
         mavenCentral()
         maven("https://jitpack.io")
-    }
-    
-    // Explicitly tells the Android build modules to ignore Kotlin 2.x metadata version flags entirely
-    tasks.withType<com.android.build.gradle.internal.tasks.DexArchiveBuilderTask>().configureEach {
-        doFirst {
-            System.setProperty("kotlin.metadata.version.check", "false")
-        }
     }
 }
 
@@ -50,8 +43,8 @@ subprojects {
 
         defaultConfig {
             minSdk = 21
-            compileSdkVersion(34)
-            targetSdk = 34
+            compileSdkVersion(35)
+            targetSdk = 35
         }
 
         compileOptions {
@@ -65,7 +58,8 @@ subprojects {
                 freeCompilerArgs.addAll(
                     "-Xno-call-assertions",
                     "-Xno-param-assertions",
-                    "-Xno-receiver-assertions"
+                    "-Xno-receiver-assertions",
+                    "-Xskip-metadata-version-check" // Forces compilation skip for version mismatch checks
                 )
             }
         }
