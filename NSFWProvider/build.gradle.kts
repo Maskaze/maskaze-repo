@@ -5,6 +5,5 @@ plugins {
 }
 
 cloudstream {
-    providerClass = "com.myplugins.NSFWProvider"
     authors = listOf("Maskaze")
 }
