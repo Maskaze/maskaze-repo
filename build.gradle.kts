@@ -11,10 +11,9 @@ buildscript {
     }
 
     dependencies {
-        // Upgraded to 8.8.0 to handle modern Kotlin metadata structures without crashing
-        classpath("com.android.tools.build:gradle:8.8.0")
+        classpath("com.android.tools.build:gradle:8.7.3")
         classpath("com.github.recloudstream:gradle:-SNAPSHOT")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:2.4.0")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:2.1.0") // Bumps step down cleanly to match tool chains
     }
 }
 
@@ -23,6 +22,13 @@ allprojects {
         google()
         mavenCentral()
         maven("https://jitpack.io")
+    }
+    
+    // Explicitly tells the Android build modules to ignore Kotlin 2.x metadata version flags entirely
+    tasks.withType<com.android.build.gradle.internal.tasks.DexArchiveBuilderTask>().configureEach {
+        doFirst {
+            System.setProperty("kotlin.metadata.version.check", "false")
+        }
     }
 }
 
@@ -44,8 +50,8 @@ subprojects {
 
         defaultConfig {
             minSdk = 21
-            compileSdkVersion(35)
-            targetSdk = 35
+            compileSdkVersion(34)
+            targetSdk = 34
         }
 
         compileOptions {
