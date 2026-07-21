@@ -5,5 +5,7 @@ plugins {
 }
 
 cloudstream {
+    // Corrects the indexing reference alignment so the plugin registers inside the final file
+    providerClass = "com.myplugins.NSFWProvider"
     authors = listOf("Maskaze")
 }
