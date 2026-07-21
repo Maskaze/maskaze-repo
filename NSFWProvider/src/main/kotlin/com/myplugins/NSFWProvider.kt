@@ -43,13 +43,13 @@ class NSFWProvider : MainAPI() {
         
         callback.invoke(
             newExtractorLink(
-                name,
-                "Primary Stream",
-                iframeUrl,
-                mainUrl,
-                Qualities.P720.value
-            )
+                name = name,
+                source = name,
+                url = iframeUrl
+            ) {
+                this.referer = mainUrl
+                this.quality = Qualities.P720.value
+            }
         )
         return true
     }
-}
