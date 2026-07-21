@@ -11,7 +11,8 @@ buildscript {
     }
 
     dependencies {
-        classpath("com.android.tools.build:gradle:8.7.3")
+        // Upgraded to 8.8.0 to handle modern Kotlin metadata structures without crashing
+        classpath("com.android.tools.build:gradle:8.8.0")
         classpath("com.github.recloudstream:gradle:-SNAPSHOT")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:2.4.0")
     }
@@ -58,8 +59,7 @@ subprojects {
                 freeCompilerArgs.addAll(
                     "-Xno-call-assertions",
                     "-Xno-param-assertions",
-                    "-Xno-receiver-assertions",
-                    "-Xno-optimized-callable-references" // Bypasses metadata layout indexing crashes
+                    "-Xno-receiver-assertions"
                 )
             }
         }
