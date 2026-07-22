@@ -38,8 +38,8 @@ subprojects {
         setRepo(System.getenv("GITHUB_REPOSITORY") ?: "user/repo")
     }
 
-    android {
-        namespace = "com.example"
+android {
+    namespace = "com.myplugins"
 
         defaultConfig {
             minSdk = 21
